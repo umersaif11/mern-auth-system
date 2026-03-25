@@ -8,3 +8,4 @@ const connectDB = async () => {
 
     await mongoose.connect(`${process.env.MONGODB_URI}/mern-auth-system`)
 }
+export default connectDB
