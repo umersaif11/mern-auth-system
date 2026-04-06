@@ -21,6 +21,11 @@ export const register = async (req, res) => {
         }
 
         const hashedPassword = await bcrypt.hash(password, 10)
+        const user = new userModel({
+            name,
+            email,
+            password: hashedPassword
+        })
     } catch (error) {
         res.json({
             success: false,
