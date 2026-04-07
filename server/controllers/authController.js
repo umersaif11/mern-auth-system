@@ -43,7 +43,7 @@ export const register = async (req, res) => {
             maxAge: 7 * 24 * 60 * 60 * 1000
         })
     } catch (error) {
-        res.json({
+        return res.json({
             success: false,
             message: error.message
         })
@@ -57,5 +57,20 @@ export const login = async (req, res) => {
             success: false,
             message: 'Email and Password are required'
         })
+    }
+
+    try {
+        const user = await userModel.findOne({email})
+
+        if(!user) {
+            return res.json({
+                success: false,
+                message: 'Invalid Email'
+            })
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password)
+    } catch (error) {
+        return res.json({success: false, message: error.message})
     }
 }        
