@@ -46,6 +46,13 @@ export const register = async (req, res) => {
             maxAge: 7 * 24 * 60 * 60 * 1000
         })
 
+        //sending welcome email 
+        const mailOptions = {
+            from: process.env.SENDER_EMAIL,
+            to: email,
+            subject: 'Welcome to Greatstack'
+        }
+
         return res.json({success: true})
 
     } catch (error) {
