@@ -146,6 +146,15 @@ export const sendVerifyOtp = async (req, res) => {
                 message: 'Account Already Verified'
             })
         }
+
+        const otp = String(Math.floor(
+            100000 + Math.random() * 900000
+        ))
+
+        user.verifyOtp = otp
+        user.verifyOtpExpireAt = Date.now() + 24 * 60 * 60 * 1000
+
+        await user.save()
         
     } catch (error) {
         return res.json({
