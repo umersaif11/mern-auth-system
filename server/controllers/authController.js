@@ -197,6 +197,13 @@ export const verifyEmail = async (req, res) => {
                 message: 'User not found'
             })
         }
+
+        if(user.verifyOtp || user.verifyOtp !== otp) {
+            return res.json({
+                success: false,
+                message: 'Invalid OTP'
+            })
+        }
         
     } catch (error) {
         return res.json({
