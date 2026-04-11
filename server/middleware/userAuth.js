@@ -12,6 +12,7 @@ const userAuth = async (req, res) => {
 
     try {
         
+        const tokenDecode = jwt.verify(token, process.env.JWT_SECRET)
     } catch (error) {
         return res.json({
             success: false,
