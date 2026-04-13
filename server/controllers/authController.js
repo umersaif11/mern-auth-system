@@ -234,7 +234,9 @@ export const verifyEmail = async (req, res) => {
 //Check if User is Authenticated
 export const isAuthenticated = async (req, res) => {
     try {
-        
+    return res.json({
+        success: true
+    })
     } catch (error) {
         return res.json({
             success: false,
