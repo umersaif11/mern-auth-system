@@ -258,6 +258,13 @@ export const sendResetOtp = async (req, res) => {
 
     try {
         
+        const user = await userModel.findOne({email})
+        if(!user) {
+            res.json({
+                success: false,
+                message: 'User not found'
+            }) 
+        }
     } catch (error) {
         res.json({
             success: false,
