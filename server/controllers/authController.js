@@ -244,3 +244,24 @@ export const isAuthenticated = async (req, res) => {
         }) 
     }
 }
+
+//Send Passsword Reset OTP
+export const sendResetOtp = async (req, res) => {
+    const {email} = req.body
+
+    if(!email) {
+        return res.json({
+            success: false,
+            message: 'Email is required'
+        }) 
+    }
+
+    try {
+        
+    } catch (error) {
+        res.json({
+            success: false,
+            message: error.message
+        }) 
+    }
+}
