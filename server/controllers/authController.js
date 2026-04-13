@@ -165,7 +165,7 @@ export const sendVerifyOtp = async (req, res) => {
         }
         await transporter.sendMail(mailOptions)
 
-        return res.response({
+        return res.json({
             success: true,
             message: 'Verification OTP Sent on Email.'
         })
@@ -198,7 +198,7 @@ export const verifyEmail = async (req, res) => {
             })
         }
 
-        if(user.verifyOtp || user.verifyOtp !== otp) {
+        if(!user.verifyOtp || user.verifyOtp !== otp) {
             return res.json({
                 success: false,
                 message: 'Invalid OTP'
