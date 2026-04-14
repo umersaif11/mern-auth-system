@@ -270,19 +270,24 @@ export const sendResetOtp = async (req, res) => {
             100000 + Math.random() * 900000
         ))
 
-        user.verifyOtp = otp
-        user.verifyOtpExpireAt = Date.now() + 24 * 60 * 60 * 1000
+        user.resetOtp = otp
+        user.resetOtpExpireAt = Date.now() + 15 * 60 * 1000
 
         await user.save()
 
         const mailOptions = {
             from: process.env.SENDER_EMAIL,
             to: user.email,
-            subject: 'Account Verification OTP',
-            text: `Your OTP is ${otp}. Verify your account using
-            this OTP.`
+            subject: 'Password Reset OTP',
+            text: `Your OTP for resetting password is ${otp}. 
+            Use this OTP to proceed with resetting your password.`
         }
         await transporter.sendMail(mailOptions)
+
+        res.json({
+            success: true,
+            message: 'OTP sent to your email'
+        }) 
         
     } catch (error) {
         res.json({
