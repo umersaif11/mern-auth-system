@@ -11,7 +11,12 @@ const Navbar = () => {
         alt=""
         className='w-28 sm:w-32'
         />
-        <button>Login</button>
+        <button
+        className='flex items-center gap-2 border border-gray-500
+        rounded-full px-6 py-2 text-gray-800 hover:bg-gray-100
+        transition-all'>
+            Login <img src={assets.arrow_icon} alt="" />
+        </button>
     </div>
   )
 }
