@@ -12,6 +12,8 @@ const Header = () => {
           Hey Developer <img src={assets.hand_wave} 
           alt="" className='w-8 aspect-square' />
         </h1>
+        <h2>Welcome to our app</h2>
+        <p></p>
     </div>
   )
 }
