@@ -6,8 +6,12 @@ const Header = () => {
     <div>
         <img src={assets.header_img} 
         alt=""
-        className='' 
+        className='w-36 h-36 rounded-full mb-6' 
         />
+        <h1>
+          Hey Developer <img src={assets.hand_wave} 
+          alt="" className='w-8 aspect-square' />
+        </h1>
     </div>
   )
 }
