@@ -6,12 +6,12 @@ const Login = () => {
   const [state, setState] = useState('Sign Up')
 
   return (
-    <div>
+    <div className='flex justify-center items-center min-h-screen px-6
+    sm:px-0 bg-linear-to-br from-blue-200 to-purple-400'>
         <img src={assets.logo} alt="" className='absolute left-5 sm:left-20
         top-5 w-28 sm:w-32 cursor-pointer'/>
         <div>
-          <h2>{state === 'Sign Up' ? 'Create your account' : 
-          'Login to your account!'}</h2>
+          <h2>{state === 'Sign Up' ? 'Create account' : 'Login'}</h2>
           <p>{state === 'Sign Up' ? 'Create your account' : 
           'Login to your account!'}</p>
         </div>
