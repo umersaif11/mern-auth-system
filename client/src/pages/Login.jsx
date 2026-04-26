@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import { assets } from '../assets/assets'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
+
+  const navigate = useNavigate()
 
   const [state, setState] = useState('Sign Up')
   const [name, setName] = useState('')
