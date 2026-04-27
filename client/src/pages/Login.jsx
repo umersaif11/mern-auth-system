@@ -15,7 +15,9 @@ const Login = () => {
     <div className='flex justify-center items-center min-h-screen px-6
     sm:px-0 text-white bg-linear-to-br from-blue-200 to-purple-400'>
 
-        <img src={assets.logo} alt="" className='absolute left-5 sm:left-20
+        <img
+        onClick={() => navigate('/')} 
+        src={assets.logo} alt="" className='absolute left-5 sm:left-20
         top-5 w-28 sm:w-32 cursor-pointer'/>
 
         <div className='bg-slate-900 p-10 rounded-lg shadow-lg w-full
@@ -64,7 +66,9 @@ const Login = () => {
               type="password" placeholder="Password" required/>
             </div>
 
-            <p className='mb-4 text-indigo-500 cursor-pointer'>
+            <p
+            onClick={() => navigate('/reset-password')} 
+            className='mb-4 text-indigo-500 cursor-pointer'>
               Forget password?
             </p>
 
