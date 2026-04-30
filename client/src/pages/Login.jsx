@@ -23,7 +23,7 @@ const Login = () => {
       axios.defaults.withCredentials = true
 
       if(state === 'Sign Up') {
-        const {data} = await axios.post(backendUrl + 'api/auth/register', {
+        const {data} = await axios.post(backendUrl + '/api/auth/register', {
           name, email, password
         })
 
@@ -36,7 +36,7 @@ const Login = () => {
 
       } else {
         
-        const {data} = await axios.post(backendUrl + 'api/auth/login', {
+        const {data} = await axios.post(backendUrl + '/api/auth/login', {
           email, password
         })
 
@@ -49,7 +49,8 @@ const Login = () => {
 
       }
     } catch (error) {
-      toast.error(error)
+      console.log(error)
+      toast.error(error.message)
     }
   }
 
