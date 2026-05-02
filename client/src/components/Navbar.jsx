@@ -19,8 +19,9 @@ const Navbar = () => {
         />
         {
           userData ?
-          <div>
-            
+          <div className='w-8 h-8 flex justify-center items-center rounded-full
+          bg-black text-white relative group'>
+            {userData.name[0].toUpperCase()}
           </div> :
           <button
           onClick={() => navigate('/login')}
