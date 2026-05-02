@@ -260,7 +260,7 @@ export const sendResetOtp = async (req, res) => {
         
         const user = await userModel.findOne({email})
         if(!user) {
-            res.json({
+            return res.json({
                 success: false,
                 message: 'User not found'
             }) 
@@ -302,7 +302,7 @@ export const resetPassword = async (req, res) => {
     const {email, otp, newPassword} = req.body
 
     if(!email || !otp || !newPassword) {
-        res.json({
+        return res.json({
             success: false,
             message: 'Email, OTP and new password are required'
         })
@@ -312,21 +312,21 @@ export const resetPassword = async (req, res) => {
 
         const user = await userModel.findOne({email})
         if(!user) {
-            res.json({
+            return res.json({
                 success: false,
                 message: 'User not found'
             })
         }
 
         if(user.resetOtp === '' || user.resetOtp !== otp) {
-            res.json({
+            return res.json({
                 success: false,
                 message: 'Invalid OTP'
             })
         }
 
         if(user.resetOtpExpireAt < Date.now()) {
-            res.json({
+            return res.json({
                 success: false,
                 message: 'OTP expired'
             })
