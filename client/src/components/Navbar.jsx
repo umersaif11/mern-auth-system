@@ -2,11 +2,25 @@ import React, { useContext } from 'react'
 import { assets } from '../assets/assets'
 import { useNavigate } from 'react-router-dom'
 import { AppContent } from '../context/AppContext'
+import { toast } from 'react-toastify'
+import axios from 'axios'
 
 const Navbar = () => {
 
   const navigate = useNavigate()
   const {userData, backendUrl, setUserData, setIsLoggedin} = useContext(AppContent)
+
+  const logout = async () => {
+    try {
+      axios.defaults.withCredentials = true
+      const {data} = await axios.post(backendUrl + '/api/auth/logout')
+      data.success && setIsLoggedin(false)
+      data.success && setUserData(false)
+      navigate('/')
+    } catch (error) {
+     toast.error(error.message) 
+    }
+  }
 
   return (
     <div
