@@ -10,6 +10,14 @@ export const AppContextProvider = (props) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [userData, setUserData] = useState(false)
 
+    const getAuthState = async () => {
+        try {
+            const {data} = 
+        } catch (error) {
+            toast.error(error.message)
+        }
+    }
+
     const getUserData = async () => {
         try {
             const {data} = await axios.get(backendUrl + '/api/user/data')
