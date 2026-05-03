@@ -12,6 +12,12 @@ const EmailVerify = () => {
     }
   }
 
+  const handleKeyDown = (e, index) => {
+    if(e.key === 'Backspace' && e.target.value === '' && index > 0) {
+      inputRefs.current[index - 1].focus()
+    }
+  }
+
   const navigate = useNavigate()
   return (
     <div>
@@ -36,7 +42,8 @@ const EmailVerify = () => {
                   className='w-12 h-12 bg-[#333A5C] text-white text-center
                   text-xl rounded-md'
                   ref={element => inputRefs.current[index] = element}
-                  onInput={e => handleInput(e, index)}/>
+                  onInput={e => handleInput(e, index)}
+                  onKeyDown={e => handleKeyDown(e, index)}/>
                 ))
               }
             </div>
