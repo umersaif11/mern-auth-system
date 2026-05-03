@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { assets } from '../assets/assets'
 
 const EmailVerify = () => {
+
+  const inputRefs = useRef([])
 
   const navigate = useNavigate()
   return (
@@ -26,10 +28,16 @@ const EmailVerify = () => {
                 Array(6).fill(0).map((_ , index) => (
                   <input type='text' maxLength='1' key={index} required
                   className='w-12 h-12 bg-[#333A5C] text-white text-center
-                  text-xl rounded-md'/>
+                  text-xl rounded-md'
+                  ref={element => inputRefs.current[index] = element}/>
                 ))
               }
             </div>
+            <button 
+            className='w-full py-3 bg-linear-to-r from-indigo-500 to-indigo-900
+            text-white rounded-full'>
+              Verify email
+            </button>
           </form>
         </div>
     </div>
