@@ -6,6 +6,12 @@ const EmailVerify = () => {
 
   const inputRefs = useRef([])
 
+  const handleInput = (e, index) => {
+    if(e.target.value.length > 0 && index < inputRefs.current.length - 1) {
+      inputRefs.current[index + 1].focus()
+    }
+  }
+
   const navigate = useNavigate()
   return (
     <div>
@@ -29,7 +35,8 @@ const EmailVerify = () => {
                   <input type='text' maxLength='1' key={index} required
                   className='w-12 h-12 bg-[#333A5C] text-white text-center
                   text-xl rounded-md'
-                  ref={element => inputRefs.current[index] = element}/>
+                  ref={element => inputRefs.current[index] = element}
+                  onInput={e => handleInput(e, index)}/>
                 ))
               }
             </div>
