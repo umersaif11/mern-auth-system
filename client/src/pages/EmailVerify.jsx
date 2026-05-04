@@ -5,6 +5,8 @@ import { AppContent } from '../context/AppContext'
 
 const EmailVerify = () => {
 
+  const navigate = useNavigate()
+
   const {backendUrl} = useContext(AppContent)
   const inputRefs = useRef([])
 
@@ -30,7 +32,19 @@ const EmailVerify = () => {
     })
   }
 
-  const navigate = useNavigate()
+  const onSubmitHandler = async (e) => {
+    try {
+      e.preventDefault()
+      const otpArray = inputRefs.current.map(element => element.value)
+      const otp = otpArray.join('')
+
+      const {data} = await axios.post()
+
+    } catch (error) {
+      
+    }
+  }
+  
   return (
     <div>
         <div
