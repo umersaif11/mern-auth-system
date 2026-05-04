@@ -1,9 +1,11 @@
-import React, { useRef } from 'react'
+import React, { useContext, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { assets } from '../assets/assets'
+import { AppContent } from '../context/AppContext'
 
 const EmailVerify = () => {
 
+  const {backendUrl} = useContext(AppContent)
   const inputRefs = useRef([])
 
   const handleInput = (e, index) => {
@@ -45,7 +47,7 @@ const EmailVerify = () => {
             <p className='text-center mb-6 text-indigo-300'>
               Enter 6-digit code sent to your email id.
             </p>
-            <div className='flex justify-between mb-8'>
+            <div className='flex justify-between mb-8' onPaste={handlePaste}>
               {
                 Array(6).fill(0).map((_ , index) => (
                   <input type='text' maxLength='1' key={index} required
