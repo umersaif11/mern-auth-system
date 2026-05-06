@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { assets } from '../assets/assets'
 import { AppContent } from '../context/AppContext'
@@ -58,6 +58,10 @@ const EmailVerify = () => {
       toast.error(error.message)
     }
   }
+
+  useEffect(() => {
+    isLoggedIn && userData && userData.isAccountVerified && navigate('/')
+  }, [isLoggedIn, userData])
   
   return (
     <div>
