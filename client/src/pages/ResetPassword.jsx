@@ -11,8 +11,7 @@ const ResetPassword = () => {
 
   const navigate = useNavigate()
 
-  const {backendUrl} = useContext(AppContent)
-  axios.defaults.withCredentials = true  
+  const {backendUrl} = useContext(AppContent) 
 
   const [email, setEmail] = useState('')
   const [newPassword, setNewPassword] = useState('')
@@ -62,6 +61,20 @@ const ResetPassword = () => {
     const otpArray = inputRefs.current.map(element => element.value)
     setOtp(otpArray.join(''))
     setIsOtpSubmitted(true)
+  }
+
+  const onSubmitNewPassword = async (e) => {
+    e.preventDefault()
+    try {
+      
+      const {data} = await axios.post(backendUrl + '/api/auth/reset-password', {
+        email, otp, newPassword
+      })
+      data.success ? toast.success(data.message) : toast.error(data.message)
+      data.success && navigate('/login')
+    } catch (error) {
+      toast.error(error.message) 
+    }
   }
 
   return (
@@ -138,6 +151,7 @@ const ResetPassword = () => {
         {
           isOtpSubmitted && isEmailSent &&
           <form 
+          onSubmit={onSubmitNewPassword}
           className='bg-slate-900 p-8 rounded-lg shadow-lg w-96 text-sm'>
             <h1 className='text-white text-2xl font-semibold text-center mb-4'>
               New Password
