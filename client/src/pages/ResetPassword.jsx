@@ -57,6 +57,13 @@ const ResetPassword = () => {
     }
   }
 
+  const onSubmitOTP = async (e) => {
+    e.preventDefault()
+    const otpArray = inputRefs.current.map(element => element.value)
+    setOtp(otpArray.join(''))
+    setIsOtpSubmitted(true)
+  }
+
   return (
     <div
     className='flex justify-center items-center min-h-screen
@@ -71,6 +78,7 @@ const ResetPassword = () => {
         {
           !isEmailSent &&
           <form 
+          onSubmit={onSubmitEmail}
           className='bg-slate-900 p-8 rounded-lg shadow-lg w-96 text-sm'>
             <h1 className='text-white text-2xl font-semibold text-center mb-4'>
               Reset Password
@@ -98,6 +106,7 @@ const ResetPassword = () => {
         {
           !isOtpSubmitted && isEmailSent &&
           <form
+          onSubmit={onSubmitOTP}
           className='bg-slate-900 p-8 rounded-lg shadow-lg w-96 text-sm'>
             <h1 className='text-white text-2xl font-semibold text-center mb-4'>
               Reset password OTP
