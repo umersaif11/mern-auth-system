@@ -9,6 +9,9 @@ const ResetPassword = () => {
 
   const [email, setEmail] = useState('')
   const [newPassword, setNewPassword] = useState('')
+  const [isEmailSent, setIsEmailSent] = useState('')
+  const [otp, setOtp] = useState(0)
+  const [isOtpSubmitted, setIsOtpSubmitted] = useState(false)
 
   const inputRefs = useRef([])
   
@@ -44,28 +47,32 @@ const ResetPassword = () => {
         top-5 w-28 sm:w-32 cursor-pointer'/>
 
         {/* Enter Email ID */}
-        <form 
-        className='bg-slate-900 p-8 rounded-lg shadow-lg w-96 text-sm'>
-          <h1 className='text-white text-2xl font-semibold text-center mb-4'>
-            Reset Password
-          </h1>
-          <p className='text-center mb-6 text-indigo-300'>
-            Enter your registered email address
-          </p>
-          <div
-          className='mb-4 flex items-center gap-3 w-full px-5 py-2.5
-          rounded-full bg-[#333A5C]'>
-            <img src={assets.mail_icon} alt="" className='w-3 h-3'/>
-            <input type="email" placeholder='Email id'
-            className='bg-transparent outline-none text-white'
-            value={email} onChange={e => setEmail(e.target.value)}/>
-          </div>
-          <button
-          className='w-full py-2.5 bg-linear-to-r from-indigo-500
-          to-indigo-900 text-white rounded-full mt-3'>
-            Submit
-          </button>
-        </form>
+
+        {
+          !isEmailSent &&
+          <form 
+          className='bg-slate-900 p-8 rounded-lg shadow-lg w-96 text-sm'>
+            <h1 className='text-white text-2xl font-semibold text-center mb-4'>
+              Reset Password
+            </h1>
+            <p className='text-center mb-6 text-indigo-300'>
+              Enter your registered email address
+            </p>
+            <div
+            className='mb-4 flex items-center gap-3 w-full px-5 py-2.5
+            rounded-full bg-[#333A5C]'>
+              <img src={assets.mail_icon} alt="" className='w-3 h-3'/>
+              <input type="email" placeholder='Email id'
+              className='bg-transparent outline-none text-white'
+              value={email} onChange={e => setEmail(e.target.value)}/>
+            </div>
+            <button
+            className='w-full py-2.5 bg-linear-to-r from-indigo-500
+            to-indigo-900 text-white rounded-full mt-3'>
+              Submit
+            </button>
+          </form>
+        }
 
         {/* OTP input form */}
         <form
