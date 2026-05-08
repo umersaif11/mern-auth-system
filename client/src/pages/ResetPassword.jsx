@@ -1,10 +1,13 @@
 import React from 'react'
 import { assets } from '../assets/assets'
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 
 const ResetPassword = () => {
 
   const navigate = useNavigate()
+
+  const [email, setEmail] = useState('')
 
   return (
     <div
@@ -29,7 +32,9 @@ const ResetPassword = () => {
           className='mb-4 flex items-center gap-3 w-full px-5 py-2.5
           rounded-full bg-[#333A5C]'>
             <img src={assets.mail_icon} alt="" className='w-3 h-3'/>
-            <input type="email" />
+            <input type="email" placeholder='Email id'
+            className='bg-transparent outline-none text-white'
+            value={email} onChange={e => setEmail(e.target.value)}/>
           </div>
 
         </form>
