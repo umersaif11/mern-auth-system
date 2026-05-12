@@ -6,7 +6,7 @@
 ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-A secure, production-ready full-stack web application demonstrating a complete user authentication flow. This project handles everything from password hashing and secure cookies to email verification using One-Time Passwords (OTPs).
+A secure, production-ready full-stack web application demonstrating a complete user authentication flow. This project handles everything from password hashing and secure cookies to email verification using One-Time Passwords (OTPs)...
 
 **[🔴 Live Demo: Coming Soon]** <!-- Add your Vercel/Render link here when you deploy! -->
 
